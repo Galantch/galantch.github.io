@@ -1,0 +1,240 @@
+<!doctype html><html><head><meta charset=utf8><meta name=viewport content="width=device-width,initial-scale=1,viewport-fit=cover"><style>:root{color-scheme:light;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}html{scroll-padding-top:env(safe-area-inset-top,0px)}body{margin:0;padding:0;font:14px -apple-system,BlinkMacSystemFont,sans-serif;background:#fff;color:#000}img{max-width:100%}[hidden]:not([hidden=until-found i]){display:none!important}</style></head><body>
+<title>Marco Galanti</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<style>
+/* Layout: colonna singola su carta a quadretti, come un quaderno di matematica; i progetti sono schede a pagina intera */
+:root {
+  --bg: #F5F7FB;
+  --grid: #DCE3F1;
+  --fg: #14213D;
+  --muted: #52607C;
+  --accent: #1F4FD8;
+  --card: #FFFFFF;
+  --line: #D0D9EC;
+  --warn: #A8650A;
+  --font-display: "Space Grotesk", "Helvetica Neue", Arial, sans-serif;
+  --font-body: "Inter", system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+  --font-mono: "JetBrains Mono", ui-monospace, "SF Mono", Menlo, Consolas, monospace;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --bg: #0E1324;
+    --grid: #1A2342;
+    --fg: #E7ECF8;
+    --muted: #9AA6C6;
+    --accent: #86A2FF;
+    --card: #141B33;
+    --line: #28335C;
+    --warn: #E6B35A;
+    color-scheme: dark;
+  }
+}
+:root[data-theme="dark"] {
+  --bg: #0E1324;
+  --grid: #1A2342;
+  --fg: #E7ECF8;
+  --muted: #9AA6C6;
+  --accent: #86A2FF;
+  --card: #141B33;
+  --line: #28335C;
+  --warn: #E6B35A;
+  color-scheme: dark;
+}
+
+* { box-sizing: border-box; }
+body {
+  background-color: var(--bg);
+  background-image:
+    linear-gradient(var(--grid) 1px, transparent 1px),
+    linear-gradient(90deg, var(--grid) 1px, transparent 1px);
+  background-size: 28px 28px;
+  color: var(--fg);
+  font-family: var(--font-body);
+  font-size: 16px;
+  line-height: 1.6;
+  padding-left: max(16px, env(safe-area-inset-left, 0px));
+  padding-right: max(16px, env(safe-area-inset-right, 0px));
+  padding-block: 48px 64px;
+}
+a { color: var(--accent); text-decoration: none; }
+a:hover { text-decoration: underline; text-underline-offset: 3px; }
+a:focus-visible, button:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 3px;
+  border-radius: 4px;
+}
+
+.page { max-width: 720px; margin: 0 auto; display: flex; flex-direction: column; gap: 48px; }
+
+header { display: flex; flex-direction: column; gap: 12px; }
+.eyebrow {
+  font-family: var(--font-mono);
+  font-size: 13px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+h1 {
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: clamp(40px, 9vw, 64px);
+  line-height: 1.05;
+  letter-spacing: -0.02em;
+  margin: 0;
+  text-wrap: balance;
+}
+.intro { font-size: 19px; color: var(--muted); max-width: 52ch; margin: 0; }
+
+h2 {
+  font-family: var(--font-display);
+  font-weight: 600;
+  font-size: 14px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--muted);
+  margin: 0 0 16px;
+}
+
+.projects { display: flex; flex-direction: column; gap: 16px; }
+.card {
+  background: var(--card);
+  border: 1px solid var(--line);
+  border-radius: 10px;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  min-width: 0;
+}
+.card-top { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 8px 16px; }
+.repo { font-family: var(--font-mono); font-size: 17px; font-weight: 600; overflow-wrap: anywhere; }
+.status {
+  display: inline-flex; align-items: center; gap: 6px;
+  font-family: var(--font-mono); font-size: 12px; color: var(--warn);
+  border: 1px solid currentColor; border-radius: 999px; padding: 2px 10px;
+}
+.status::before { content: ""; width: 6px; height: 6px; border-radius: 50%; background: currentColor; }
+.card p { margin: 0; max-width: 60ch; }
+.tags { display: flex; flex-wrap: wrap; gap: 8px; margin: 0; padding: 0; list-style: none; }
+.tags li {
+  font-family: var(--font-mono); font-size: 12.5px; color: var(--muted);
+  background: var(--bg); border: 1px solid var(--line); border-radius: 6px; padding: 2px 8px;
+}
+.links { display: flex; flex-wrap: wrap; gap: 8px 20px; font-weight: 500; }
+
+.all { margin-top: 20px; font-weight: 500; }
+
+.contact { display: flex; flex-direction: column; gap: 12px; }
+.mail-row { display: flex; flex-wrap: wrap; align-items: center; gap: 10px 14px; }
+.mail {
+  font-family: var(--font-mono); font-size: 15px;
+  background: var(--card); border: 1px solid var(--line); border-radius: 6px;
+  padding: 6px 10px; user-select: all; overflow-wrap: anywhere;
+}
+button.copy {
+  font: inherit; font-size: 14px; font-weight: 500; cursor: pointer;
+  color: var(--accent); background: transparent;
+  border: 1px solid var(--line); border-radius: 6px; padding: 6px 12px;
+}
+button.copy:hover { border-color: var(--accent); }
+.copy-state { font-size: 14px; color: var(--muted); min-height: 1.4em; }
+.other { font-weight: 500; }
+
+@media (prefers-reduced-motion: no-preference) {
+  .card { transition: border-color 0.15s ease; }
+  .card:hover { border-color: var(--accent); }
+}
+</style>
+
+<div class="page">
+  <header>
+    <span class="eyebrow">Matematica · Informatica</span>
+    <h1>Marco Galanti</h1>
+    <p class="intro">Sono uno studente appassionato di matematica e di informatica.</p>
+  </header>
+
+  <main>
+    <section aria-labelledby="progetti">
+      <h2 id="progetti">Progetti</h2>
+      <div class="projects">
+
+        <article class="card">
+          <div class="card-top">
+            <span class="repo">appunti_terza</span>
+            <span class="status">In corso</span>
+          </div>
+          <p>Repository di laboratorio per la terza superiore, indirizzo Informatica.</p>
+          <ul class="tags" aria-label="Materie">
+            <li>Informatica</li>
+            <li>Sistemi e Reti</li>
+            <li>Tecn. Informatiche</li>
+            <li>Telecomunicazioni</li>
+          </ul>
+          <div class="links">
+            <a href="https://github.com/Galantch/appunti-terza">Apri su GitHub →</a>
+          </div>
+        </article>
+
+        <article class="card">
+          <div class="card-top">
+            <span class="repo">appunti_matematica</span>
+            <span class="status">In corso</span>
+          </div>
+          <p>Appunti di matematica dalla terza alla quinta superiore, scritti in LaTeX e disponibili anche in PDF.</p>
+          <ul class="tags" aria-label="Formati">
+            <li>LaTeX</li>
+            <li>PDF</li>
+          </ul>
+          <div class="links">
+            <a href="https://github.com/Galantch/appunti_matematica">Apri su GitHub →</a>
+            <a href="https://github.com/Galantch/appunti_matematica/blob/main/appunti_matematica.pdf">Leggi il PDF →</a>
+          </div>
+        </article>
+
+      </div>
+      <div class="all"><a href="https://github.com/Galantch?tab=repositories">Tutte le repository →</a></div>
+    </section>
+
+    <section class="contact" aria-labelledby="contatti" style="margin-top:48px">
+      <h2 id="contatti" style="margin-bottom:4px">Contatti</h2>
+      <div class="mail-row">
+        <span class="mail" id="mail-text">marcogalanti30@gmail.com</span>
+        <button class="copy" id="copy-btn" type="button">Copia email</button>
+        <span class="copy-state" id="copy-state" role="status" aria-live="polite"></span>
+      </div>
+      <div class="other">
+        <a href="mailto:marcogalanti30@gmail.com">Scrivi una email</a> ·
+        <a href="https://github.com/Galantch">GitHub</a>
+      </div>
+    </section>
+  </main>
+</div>
+
+<script>
+(function () {
+  var btn = document.getElementById("copy-btn");
+  var state = document.getElementById("copy-state");
+  var text = document.getElementById("mail-text");
+  function selectText() {
+    try {
+      var r = document.createRange();
+      r.selectNodeContents(text);
+      var s = window.getSelection();
+      s.removeAllRanges();
+      s.addRange(r);
+    } catch (e) {}
+  }
+  btn.addEventListener("click", function () {
+    var value = text.textContent.trim();
+    var done = function () { state.textContent = "Copiata"; setTimeout(function () { state.textContent = ""; }, 2000); };
+    var fail = function () { selectText(); state.textContent = "Selezionata, copia con Ctrl+C"; };
+    try {
+      if (navigator.clipboard && navigator.clipboard.writeText) {
+        navigator.clipboard.writeText(value).then(done, fail);
+      } else { fail(); }
+    } catch (e) { fail(); }
+  });
+})();
+</script>
+
+</body></html>
